@@ -1,25 +1,23 @@
+import { useState } from "react";
+import Alert from "./components/Alert";
+import Button from "./components/Button";
 
-import ListGroup from "./components/ListGroup";
+function App() {
+  const [alertVisible, setAlertVisible] = useState(false);
+  return (
+    <div>
+      {alertVisible && (
+        <Alert>
+          <span></span>
+          <strong>Alert!</strong> This is a custom alert component.
+        </Alert>
+      )}
 
-function App(){
-    let items = [
-      "Ghana",
-      "Nigeria",
-      "Kenya",
-      "South Africa",
-      "Uganda",
-      "Tanzania",
-      "Zimbabwe",
-      "Rwanda",
-    ];
-
-    const handleSelectItem = (item: string) => {
-      console.log(item);
-    }
-
-  return( <div>
-   <ListGroup items={items} heading="Cities" onSelectItem={handleSelectItem}/>
-  </div>);
+      <Button onClick={() => setAlertVisible(!alertVisible)} color="primary">
+        <strong>Click</strong>
+      </Button>
+    </div>
+  );
 }
 
 export default App;
